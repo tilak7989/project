@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: url('https://www.simplilearn.com/ice9/free_resources_article_thumb/Digital_Marketing_Benefits.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-blend-mode: darken;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .login-container {
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ecf0f1;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .field {
+      position: relative;
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    form input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #f7fafa;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #eff2f5;
+      color: #0c0c0c;
+      margin-bottom: 8px;
+      transition: border-color 0.3s;
+    }
+
+    form input:focus {
+      border-color: #111010;
+      outline: none;
+    }
+
+    .show-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #ecf0f1;
+    }
+
+    button {
+      width: 100%;
+      background-color: #f47003;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #f54c04;
+    }
+
+    .signup-link, .forgot-password {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .signup-link a, .forgot-password a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover, .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .google-login {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .popup-button {
+      background-color: #fa7203;
+      color: #ecf0f1;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #fc4401;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s ease;
+    }
+
+    .popup-button:hover {
+      background-color: #fe5b03;
+    }
+
+    /* Forgot Password Modal */
+    #forgotModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff; /* changed */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      width: 300px;
+    }
+
+    #forgotModal h3 {
+      margin-top: 0;
+      color: #2c3e50;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    #forgotModal form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #forgotModal input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #7f8c8d;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+      font-size: 14px;
+    }
+
+    #forgotModal button[type="submit"] {
+      padding: 8px;
+      background-color: #ff6d00;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #forgotModal button.cancel {
+      background-color: transparent;
+      padding: 6px 10px;
+      font-size: 13px;
+      border: 1px solid #bdc3c7;
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+
+    <form method="POST">
+      <div class="field">
+        <input type="text" name="username" placeholder="Username" required>
+      </div>
+
+      <div class="field">
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <span class="show-password" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <button type="submit">Login</button>
+
+      <div class="forgot-password">
+        <a href="#" onclick="openForgotModal()">Forgot Password?</a>
+      </div>
+    </form>
+
+    <div class="google-login">
+      <p>or</p>
+      <button class="popup-button" onclick="showGooglePopup()">Sign in with Google</button>
+    </div>
+
+    <div class="signup-link">
+      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div id="forgotModal">
+    <h3>Reset Password</h3>
+    <form onsubmit="submitForgotPassword(event)">
+      <input type="email" id="resetEmail" placeholder="Enter your email" required />
+      <button type="submit">Send Reset Link</button>
+      <button type="button" class="cancel" onclick="closeForgotModal()">Cancel</button>
+    </form>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+    }
+
+    function showGooglePopup() {
+      google.accounts.id.initialize({
+        client_id: "YOUR_GOOGLE_CLIENT_ID",
+        callback: handleGoogleLogin,
+        ux_mode: "popup"
+      });
+      google.accounts.id.prompt();
+    }
+
+    function handleGoogleLogin(response) {
+      fetch("/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: response.credential })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = "/home";
+        } else {
+          alert("Google login failed");
+        }
+      })
+      .catch(err => {
+        console.error("Login Error:", err);
+        alert("Something went wrong");
+      });
+    }
+
+    function openForgotModal() {
+      document.getElementById('forgotModal').style.display = 'block';
+    }
+
+    function closeForgotModal() {
+      document.getElementById('forgotModal').style.display = 'none';
+    }
+
+    function submitForgotPassword(event) {
+      event.preventDefault();
+      const email = document.getElementById('resetEmail').value;
+      if (!email) {
+        alert("Please enter your email.");
+        return;
+      }
+
+      // Simulate sending reset link
+      console.log("Reset link sent to:", email);
+      alert("If this email is registered, a reset link has been sent.");
+      closeForgotModal();
+    }
+  </script>
+</body>
+</html>
