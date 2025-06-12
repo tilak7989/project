@@ -96,6 +96,47 @@
       gap: 30px;
     }
 
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    .profile-icon {
+      cursor: pointer;
+      display: inline-block;
+      padding: 5px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #ffffff;
+      min-width: 150px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      z-index: 1001;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #333;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f0f0f0;
+      color: #ff6d00;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
     .card {
       background-color: white;
       padding: 20px;
@@ -127,7 +168,41 @@
       font-size: 14px;
       color: #666;
     }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    .dark-mode header,
+    .dark-mode footer {
+      background-color: #1e1e1e;
+      color: #ccc;
+    }
+    .dark-mode nav a,
+    .dark-mode .dropdown-menu a {
+      color: #f1f1f1;
+    }
+    .dark-mode nav a:hover,
+    .dark-mode .dropdown-menu a:hover {
+      color: #ff6d00;
+      background-color: #333;
+    }
+    .dark-mode .card {
+      background-color: #1f1f1f;
+      color: #fff;
+    }
+    .dark-mode .dropdown-menu {
+      background-color: #1e1e1e;
+    }
   </style>
+  <script>
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.classList.add('dark-mode');
+      });
+    }
+  </script>
 </head>
 <body>
 
@@ -139,6 +214,18 @@
       <a href="jobs.html">Jobs</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+      <div class="dropdown">
+        <a href="#" class="profile-icon" title="Profile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#333" viewBox="0 0 24 24">
+            <path d="M12 2C9.243 2 7 4.243 7 7s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5zm0 14c-4.418 0-8 1.79-8 4v2h16v-2c0-2.21-3.582-4-8-4z"/>
+          </svg>
+        </a>
+        <div class="dropdown-menu">
+          <a href="profile.html">View Profile</a>
+          <a href="settings.html">Settings</a>
+          <a href="login.html">Logout</a>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -175,6 +262,8 @@
   <footer>
     &copy; 2025 JobHunt | Made with ❤️ for job seekers
   </footer>
+
+
 
 </body>
 </html>
