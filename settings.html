@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --card-color: #fff;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --card-color: #2c2c2c;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      padding: 40px 20px;
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: var(--card-color);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff6d00;
+      margin-bottom: 30px;
+    }
+
+    .settings-row {
+      margin-bottom: 20px;
+    }
+
+    .settings-row label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .settings-row input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f1f1f1;
+    }
+
+    body.dark .settings-row input {
+      background-color: #444;
+      color: #eee;
+      border: 1px solid #666;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #ff6d00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      font-size: 14px;
+      display: inline-block;
+      min-width: 90px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #e65c00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Settings</h2>
+
+    <div class="settings-row">
+      <label for="new-password">New Password</label>
+      <input type="password" id="new-password" placeholder="Enter new password">
+    </div>
+
+    <div class="settings-row">
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" id="confirm-password" placeholder="Confirm new password">
+    </div>
+
+    <div class="btn-group">
+      <button class="btn" onclick="savePassword()">Save</button>
+      <a href="home1.html" class="btn">Home</a>
+    </div>
+  </div>
+
+  <script>
+    // Load theme if saved
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+    }
+
+    function savePassword() {
+      const newPass = document.getElementById('new-password').value;
+      const confirmPass = document.getElementById('confirm-password').value;
+
+      if (!newPass || !confirmPass) {
+        alert("Please fill in both password fields.");
+        return;
+      }
+
+      if (newPass !== confirmPass) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      alert("Password updated successfully!");
+      // You can add an actual backend API call here to update the password
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9f9f9;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff6d00;
+      margin-bottom: 30px;
+    }
+
+    .profile-row {
+      margin-bottom: 20px;
+    }
+
+    .profile-row label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .profile-row input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f1f1f1;
+    }
+
+    .profile-row input:disabled {
+      background-color: #eee;
+      color: #888;
+    }
+
+    .btn-group {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #ff6d00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      font-size: 14px;
+      display: inline-block;
+      min-width: 90px;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #e65c00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>User Profile</h2>
+
+    <div class="profile-row">
+      <label>Name:</label>
+      <input type="text" id="name" value="John Doe" disabled />
+    </div>
+
+    <div class="profile-row">
+      <label>Email:</label>
+      <input type="email" id="email" value="johndoe@example.com" disabled />
+    </div>
+
+    <div class="profile-row">
+      <label>Phone:</label>
+      <input type="text" id="phone" value="+91-9876543210" disabled />
+    </div>
+
+    <div class="btn-group">
+      <button class="btn" id="editBtn" onclick="enableEditing()">Edit</button>
+      <button class="btn" id="saveBtn" onclick="disableEditing()" style="display:none;">Save</button>
+      <a href="home1.html" class="btn">Home</a>
+    </div>
+  </div>
+
+  <script>
+    function enableEditing() {
+      document.getElementById("name").disabled = false;
+      document.getElementById("email").disabled = false;
+      document.getElementById("phone").disabled = false;
+
+      document.getElementById("editBtn").style.display = "none";
+      document.getElementById("saveBtn").style.display = "inline-block";
+    }
+
+    function disableEditing() {
+      document.getElementById("name").disabled = true;
+      document.getElementById("email").disabled = true;
+      document.getElementById("phone").disabled = true;
+
+      document.getElementById("editBtn").style.display = "inline-block";
+      document.getElementById("saveBtn").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
