@@ -171,6 +171,12 @@
       background-color: #e65c00;
     }
   </style>
+  <script>
+  // Check localStorage on load and apply dark mode if set
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark-mode');
+  }
+</script>
 </head>
 <body>
 
