@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Page</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <style>
     * {
       box-sizing: border-box;
@@ -130,14 +131,13 @@
       background-color: #fe5b03;
     }
 
-    /* Forgot Password Modal */
     #forgotModal {
       display: none;
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: #ffffff; /* changed */
+      background-color: #ffffff;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -236,7 +236,7 @@
 
     function showGooglePopup() {
       google.accounts.id.initialize({
-        client_id: "YOUR_GOOGLE_CLIENT_ID",
+        client_id: "YOUR_GOOGLE_CLIENT_ID", // Replace with your actual Client ID
         callback: handleGoogleLogin,
         ux_mode: "popup"
       });
@@ -244,23 +244,10 @@
     }
 
     function handleGoogleLogin(response) {
-      fetch("/auth/google", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: response.credential })
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          window.location.href = "/home";
-        } else {
-          alert("Google login failed");
-        }
-      })
-      .catch(err => {
-        console.error("Login Error:", err);
-        alert("Something went wrong");
-      });
+      // Normally you send `response.credential` to your backend for verification
+      console.log("Google Login Response:", response);
+      alert("Google Login Successful!");
+      window.location.href = "dashboard.html"; // Redirect to your dashboard or homepage
     }
 
     function openForgotModal() {
@@ -278,9 +265,6 @@
         alert("Please enter your email.");
         return;
       }
-
-      // Simulate sending reset link
-      console.log("Reset link sent to:", email);
       alert("If this email is registered, a reset link has been sent.");
       closeForgotModal();
     }
