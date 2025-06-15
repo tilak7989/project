@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home</title>
+  <title>JobHunt</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -31,28 +31,34 @@
     }
 
     .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 80px;
+      margin-right: 10px;
+    }
+
+    .logo span {
       font-size: 24px;
-      font-weight: 700;
+      font-weight: bold;
       color: #ff6d00;
     }
 
-    .auth-buttons {
-      display: flex;
-      gap: 15px;
-    }
-
-    .auth-buttons a {
-      padding: 10px 18px;
+    .nav-buttons a {
+      margin-left: 15px;
+      padding: 8px 16px;
       background-color: #ff6d00;
       color: white;
-      border-radius: 8px;
       text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s;
     }
 
-    .auth-buttons a:hover {
-      background-color: #e65c00;
+    .nav-buttons a:hover {
+      background-color: #e55c00;
     }
 
     .hero {
@@ -134,13 +140,42 @@
       font-size: 14px;
       color: #666;
     }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .search-bar {
+        flex-direction: column;
+      }
+
+      .search-bar input,
+      .search-bar button {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .search-bar button {
+        margin-top: 10px;
+        border-radius: 8px;
+      }
+
+      .nav-buttons a {
+        margin-left: 5px;
+        padding: 6px 12px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">JobHunt</div>
-    <div class="auth-buttons">
+    <div class="logo">
+      <img src="jh.jpeg" alt="Logo">
+      <span>JobHunt</span>
+    </div>
+    <div class="nav-buttons">
       <a href="login.html">Login</a>
       <a href="signup.html">Signup</a>
     </div>
@@ -151,8 +186,8 @@
       <h1>Find Your Dream Job</h1>
       <p>Search from thousands of opportunities across industries</p>
       <div class="search-bar">
-        <input type="text" placeholder="Search jobs or companies..." />
-        <button onclick="window.location.href='login.html'">Search</button>
+        <input type="text" placeholder="Search jobs or companies..."/>
+        <button>Search</button>
       </div>
     </div>
   </section>
