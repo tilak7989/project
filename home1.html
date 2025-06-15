@@ -31,9 +31,16 @@
     }
 
     .logo {
+      display: flex;
+      align-items: center;
       font-size: 24px;
       font-weight: 700;
       color: #ff6d00;
+    }
+
+    .logo img {
+      height: 80px;
+      margin-right: 10px;
     }
 
     nav a {
@@ -174,28 +181,34 @@
       background-color: #121212;
       color: #f1f1f1;
     }
+
     .dark-mode header,
     .dark-mode footer {
       background-color: #1e1e1e;
       color: #ccc;
     }
+
     .dark-mode nav a,
     .dark-mode .dropdown-menu a {
       color: #f1f1f1;
     }
+
     .dark-mode nav a:hover,
     .dark-mode .dropdown-menu a:hover {
       color: #ff6d00;
       background-color: #333;
     }
+
     .dark-mode .card {
       background-color: #1f1f1f;
       color: #fff;
     }
+
     .dark-mode .dropdown-menu {
       background-color: #1e1e1e;
     }
   </style>
+
   <script>
     if (localStorage.getItem('darkMode') === 'enabled') {
       document.addEventListener('DOMContentLoaded', function () {
@@ -207,7 +220,10 @@
 <body>
 
   <header>
-    <div class="logo">JobHunt</div>
+    <div class="logo">
+      <img src="jh.jpeg" alt="Logo" />
+      <span>JobHunt</span>
+    </div>
     <nav>
       <a href="home1.html">Home</a>
       <a href="internships.html">Internships</a>
@@ -262,8 +278,6 @@
   <footer>
     &copy; 2025 JobHunt | Made with ❤️ for job seekers
   </footer>
-
-
 
 </body>
 </html>
